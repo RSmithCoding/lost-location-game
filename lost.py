@@ -25,17 +25,29 @@ random = random.randint(0, 999)
 lat, long, city, country = df.iloc[(random)]
 
 
-print(random)
-print(f"The lat is {lat}")
-print(f"The long is {long}")
-print(f"The city is {city}")
-print(f"The country is {country}")
-
 input("Press any key to get lost...")
 
 street_view(latitude=lat, longitude=long, heading=220, pitch=10)
 
 os.system('clear')
 
-print("Where are you? Guess the City or Country. Correct City for 10 points or Country for 5 points\n")
-input("I'm in... ")
+
+
+
+def guess():
+
+    os.system('clear')
+    print("Where are you? Guess the City or Country. Press 'q' to Quit\n")
+    answer = input("I'm in...")
+
+    if answer == city or answer == country:
+        print("Well Done! You guessed correct!")
+        quit()
+    elif answer == "q":
+        quit()
+    else:
+        print("Sorry wrong answer")
+        guess()
+        
+
+guess()

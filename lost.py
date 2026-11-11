@@ -20,9 +20,9 @@ def street_view(latitude, longitude, heading=0, pitch=0, fov=90):
 
 df = pd.read_csv("lost_rawdata.csv")
 
-random = random.randint(0, 999)
+pick_number = random.randint(0, 999)
 
-lat, long, city, country = df.iloc[(random)]
+lat, long, city, country = df.iloc[(pick_number)]
 
 
 input("Press any key to get lost...")
@@ -38,15 +38,16 @@ def guess():
 
     os.system('clear')
     print("Where are you? Guess the City or Country. Press 'q' to Quit\n")
-    answer = input("I'm in...")
+    answer = input("I'm in...").lower()
 
-    if answer == city or answer == country:
+    if answer == city.lower() or answer == country.lower():
         print("Well Done! You guessed correct!")
         quit()
     elif answer == "q":
+        input(f"Sorry, the correct answer was {city} in {country}, press any key to quit..")
         quit()
     else:
-        print("Sorry wrong answer")
+        input("Sorry, wrong answer press any key to retry..")
         guess()
         
 
